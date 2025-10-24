@@ -1,28 +1,36 @@
 import React from 'react';
 import Square from './Square';
 
-export default function Board() {
-    return (
+export default class Board extends React.Component {
+    renderSquares =(i) => {
+        return(
+            <Square value = {this.props.squares[i]} handleClick = {() => this.props.clickAction(i)}/>
+        )
+    }
+    render() {
+        return (
         <div>
             <div className="board-row">
-                <Square/>
-                <Square/>
-                <Square/>
-            </div>
-            
-            <div className="board-row">
-                <Square/>
-                <Square/>
-                <Square/>
+                {this.renderSquares(0)}
+                {this.renderSquares(1)}
+                {this.renderSquares(2)}
             </div>
 
             <div className="board-row">
-                <Square/>
-                <Square/>
-                <Square/>
+                {this.renderSquares(3)}
+                {this.renderSquares(4)}
+                {this.renderSquares(5)}
+            </div>
+
+            <div className="board-row">
+                {this.renderSquares(6)}
+                {this.renderSquares(7)}
+                {this.renderSquares(8)}
             </div>
         </div>
     )
+    }
+
 
 
 }
